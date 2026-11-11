@@ -1,0 +1,13 @@
+{
+    "replace":false,
+    "values":[
+        "silvercraft:oxidation_raw_silver_block",
+        "silvercraft:oxidation_silver_ore",
+        "silvercraft:oxidation_deepslate_silver_ore",
+        "silvercraft:oxidation_rich_silver_ore",
+        "silvercraft:oxidation_deepslate_rich_silver_ore",
+        "silvercraft:oxidation_sparse_silver_ore",
+        "silvercraft:oxidation_deepslate_sparse_silver_ore",
+        "silvercraft:oxidation_silver_block"
+    ]
+}

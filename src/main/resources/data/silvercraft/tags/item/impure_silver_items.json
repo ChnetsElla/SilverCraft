@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "silvercraft:oxidation_raw_silver",
+    "silvercraft:oxidation_silver_nugget",
+    "silvercraft:oxidation_silver_ingot"
+  ]
+}

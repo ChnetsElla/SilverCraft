@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "silvercraft:block/silver_wall_torch"
+    },
+    "facing=north": {
+      "model": "silvercraft:block/silver_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "silvercraft:block/silver_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "silvercraft:block/silver_wall_torch",
+      "y": 180
+    }
+  }
+}

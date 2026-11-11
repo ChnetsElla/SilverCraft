@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "experience": 0.67,
+  "cookingtime": 400,
+  "ingredient": "silvercraft:oxidation_silver_nugget",
+  "result": {
+    "id": "silvercraft:silver_nugget"
+  }
+}

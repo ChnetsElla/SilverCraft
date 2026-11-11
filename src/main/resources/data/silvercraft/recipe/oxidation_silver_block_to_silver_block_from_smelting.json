@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "experience": 1.25,
+  "cookingtime": 800,
+  "ingredient": "silvercraft:oxidation_silver_block",
+  "result": {
+    "id": "silvercraft:silver_block"
+  }
+}

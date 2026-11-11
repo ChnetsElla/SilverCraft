@@ -1,0 +1,11 @@
+{
+  "silver_fires": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "silvercraft:silver_fires",
+        "stream": false
+      }
+    ]
+  }
+}

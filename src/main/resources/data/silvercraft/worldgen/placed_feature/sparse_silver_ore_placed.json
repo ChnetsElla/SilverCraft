@@ -1,0 +1,48 @@
+{
+    "feature": "silvercraft:sparse_silver_ore",
+    "placement": [
+        {
+            "type": "minecraft:biome",
+            "step": "underground_ores"
+        },
+        {
+            "type": "minecraft:count",
+            "count": 2
+        },
+        {
+            "type": "minecraft:in_square"
+        },
+        {
+            "type": "minecraft:height_range",
+            "height": {
+                "type": "minecraft:weighted_list",
+                "distribution": [
+                    {
+                        "data": {
+                            "type": "minecraft:uniform",
+                            "min_inclusive": { "absolute": -20 },
+                            "max_inclusive": { "absolute": 0 }
+                        },
+                        "weight": 2
+                    },
+                    {
+                        "data": {
+                            "type": "minecraft:uniform",
+                            "min_inclusive": { "absolute": 0 },
+                            "max_inclusive": { "absolute": 12 }
+                        },
+                        "weight": 4
+                    },
+                    {
+                        "data": {
+                            "type": "minecraft:uniform",
+                            "min_inclusive": { "absolute": 12 },
+                            "max_inclusive": { "absolute": 24 }
+                        },
+                        "weight": 3
+                    }
+                ]
+            }
+        }
+    ]
+}

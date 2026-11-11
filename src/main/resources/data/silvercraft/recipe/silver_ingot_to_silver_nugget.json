@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": "silvercraft:silver_ingot"
+  },
+  "result": {
+    "id": "silvercraft:silver_nugget",
+    "count": 9
+  }
+}

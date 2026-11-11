@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "silvercraft",
+	"version": "${version}",
+	"name": "SilverCraft",
+	"description": "This is silver craft mod! ",
+	"authors": [
+		"Chnets Ella"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/silvercraft/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.silvercraft.silvercraft.SilverCraft"
+		],
+		"client": [
+			"com.silvercraft.silvercraft.SilverCraft"
+		],
+		"fabric-datagen": [
+			"com.silvercraft.silvercraft.SilverCraft"
+		]
+	},
+	"mixins": [
+		"silvercraft.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*",
+		"lighthlib": "*" 
+	}
+}

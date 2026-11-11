@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": "silvercraft:silver_block"
+  },
+  "result": {
+    "id": "silvercraft:silver_ingot",
+    "count": 9
+  }
+}

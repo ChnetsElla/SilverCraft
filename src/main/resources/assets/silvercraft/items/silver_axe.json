@@ -1,0 +1,17 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "silvercraft:undead_near",
+    "on_true": {
+      "type": "minecraft:composite",
+      "models": [
+        { "type": "minecraft:model", "model": "silvercraft:item/silver_axe" },
+        { "type": "minecraft:model", "model": "silvercraft:item/silver_axe_glow" }
+      ]
+    },
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "silvercraft:item/silver_axe"
+    }
+  }
+}

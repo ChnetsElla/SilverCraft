@@ -1,0 +1,24 @@
+{
+  "values": [
+    "minecraft:iron_ore",
+    "minecraft:deepslate_iron_ore",
+    "minecraft:copper_ore",
+    "minecraft:deepslate_copper_ore",
+    "minecraft:emerald_ore",
+    "minecraft:deepslate_emerald_ore",
+    "minecraft:redstone_ore",
+    "minecraft:deepslate_redstone_ore",
+    "minecraft:diamond_ore",
+    "minecraft:deepslate_diamond_ore",
+    "minecraft:obsidian",
+    "minecraft:ancient_debris",
+    "silvercraft:raw_silver_block",
+    "silvercraft:silver_block",
+    "silvercraft:rich_silver_ore",
+    "silvercraft:deepslate_rich_silver_ore",
+    "silvercraft:silver_ore",
+    "silvercraft:deepslate_silver_ore",
+    "silvercraft:sparse_silver_ore",
+    "silvercraft:deepslate_sparse_silver_ore"
+  ]
+}

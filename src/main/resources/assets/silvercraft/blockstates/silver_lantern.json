@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "hanging=true,waterlogged=false": { 
+      "model": "silvercraft:block/silver_lantern_hanging"
+     },
+    "hanging=true,waterlogged=true":  { 
+      "model": "silvercraft:block/silver_lantern_hanging"
+     },
+    "hanging=false,waterlogged=false": { 
+      "model": "silvercraft:block/silver_lantern"
+     },
+    "hanging=false,waterlogged=true":  { 
+      "model": "silvercraft:block/silver_lantern" 
+    }
+  }
+}
