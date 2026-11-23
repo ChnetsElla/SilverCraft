@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "experience": 0.67,
+  "cookingtime": 100,
+  "ingredient": "silvercraft:oxidation_silver_nugget",
+  "result": {
+    "id": "silvercraft:silver_nugget"
+  }
+}

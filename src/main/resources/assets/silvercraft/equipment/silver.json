@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "silvercraft:silver"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "silvercraft:silver"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "silvercraft:silver"
+      }
+    ]
+  }
+}

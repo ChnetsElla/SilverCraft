@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#B#",
+    "###"
+  ],
+  "key": {
+    "#": "silvercraft:silver_nugget",
+    "B": "minecraft:beetroot"
+  },
+  "result": {
+    "id": "silvercraft:silver_beetroot"
+  }
+}

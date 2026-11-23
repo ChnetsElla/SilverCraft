@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "experience": 10.25,
+  "cookingtime": 900,
+  "ingredient": "silvercraft:oxidation_silver_block",
+  "result": {
+    "id": "silvercraft:silver_block"
+  }
+}

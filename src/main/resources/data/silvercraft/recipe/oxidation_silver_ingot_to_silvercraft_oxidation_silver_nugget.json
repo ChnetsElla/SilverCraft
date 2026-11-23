@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": "silvercraft:oxidation_silver_ingot"
+  },
+  "result": {
+    "id": "silvercraft:oxidation_silver_nugget",
+    "count": 9
+  }
+}

@@ -1,0 +1,142 @@
+package com.silvercraft.silvercraft;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.triggers.InventoryChangeTrigger;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Recipe;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+
+public class ModAdvancementProvider extends FabricAdvancementProvider {
+
+    protected ModAdvancementProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
+        super(output, registryLookup);
+    }
+
+    @Override
+    public void generateAdvancement(HolderLookup.Provider registryLookup, Consumer<AdvancementHolder> consumer) {
+        Path currentDir = Paths.get("").toAbsolutePath();
+        Path projectRoot = currentDir.endsWith("run/datagen") ? currentDir.getParent().getParent() : currentDir;
+        Path recipeDir = projectRoot.resolve("src/main/resources/data/silvercraft/recipe");
+
+        if (!Files.exists(recipeDir)) return;
+
+        try (Stream<Path> paths = Files.walk(recipeDir)) {
+            paths.filter(Files::isRegularFile)
+                 .filter(path -> path.toString().endsWith(".json"))
+                 .forEach(path -> {
+                     String fileName = path.getFileName().toString();
+                     String recipeName = fileName.substring(0, fileName.length() - 5);
+                     
+                     try {
+                         String jsonContent = Files.readString(path, StandardCharsets.UTF_8);
+                         JsonObject json = JsonParser.parseString(jsonContent).getAsJsonObject();
+                         
+                         List<String> ingredientIds = new ArrayList<>();
+
+                         // 1. 暴力兼容解析（解决熔炉、高炉、切石机、工作台所有格式）
+                         if (json.has("key")) {
+                             for (JsonElement el : json.getAsJsonObject("key").asMap().values()) {
+                                 extractItemIds(el, ingredientIds);
+                             }
+                         }
+                         if (json.has("ingredients")) {
+                             for (JsonElement el : json.getAsJsonArray("ingredients")) {
+                                 extractItemIds(el, ingredientIds);
+                             }
+                         }
+                         if (json.has("ingredient")) { // 熔炉格式
+                             extractItemIds(json.get("ingredient"), ingredientIds);
+                         }
+
+                         // 2. 原版智能过滤：过滤掉原版的普通材料（如木棍），只留核心材料（如银锭）
+                         // 这样只要捡起银锭，就会立刻弹提示，不用等凑齐木棍
+                         List<String> coreIngredients = new ArrayList<>();
+                         for (String id : ingredientIds) {
+                             if (id.startsWith("silvercraft:")) {
+                                 coreIngredients.add(id);
+                             }
+                         }
+                         
+                         // 如果配方全是原版材料，那就保留所有
+                         if (coreIngredients.isEmpty()) {
+                             coreIngredients.addAll(ingredientIds);
+                         }
+
+                         // 3. 去重并过滤掉空气
+                         List<String> finalIngredients = coreIngredients.stream().distinct().toList();
+                         if (finalIngredients.isEmpty()) {
+                             System.out.println(">>> [Datagen 警告] 无法解析配方的材料: " + fileName);
+                             return;
+                         }
+
+                         generateSilentUnlockAdvancement(consumer, recipeName, finalIngredients);
+                         
+                     } catch (Exception e) {
+                         e.printStackTrace();
+                     }
+                 });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 万能 JSON 物品 ID 提取器
+    private void extractItemIds(JsonElement el, List<String> list) {
+        if (el.isJsonPrimitive()) {
+            String s = el.getAsString();
+            if (s.contains(":")) list.add(s);
+        } else if (el.isJsonObject()) {
+            JsonObject obj = el.getAsJsonObject();
+            if (obj.has("item")) {
+                list.add(obj.get("item").getAsString());
+            }
+            // 如果配方里写的是 tag（比如 #minecraft:planks），这里暂不处理，防止报错
+        } else if (el.isJsonArray()) {
+            for (JsonElement e : el.getAsJsonArray()) {
+                extractItemIds(e, list);
+            }
+        }
+    }
+
+    private void generateSilentUnlockAdvancement(Consumer<AdvancementHolder> consumer, String recipeName, List<String> ingredientIds) {
+        String advancementId = "unlock_" + recipeName;
+        
+        Item[] items = ingredientIds.stream()
+                .map(id -> BuiltInRegistries.ITEM.get(Identifier.parse(id)).map(Holder::value).orElse(Items.AIR))
+                .filter(item -> item != Items.AIR)
+                .toArray(Item[]::new);
+
+        if (items.length == 0) return;
+
+        Advancement.Builder.advancement()
+                .addCriterion("has_ingredients", InventoryChangeTrigger.TriggerInstance.hasItems(items))
+                .rewards(new AdvancementRewards.Builder().addRecipe(
+                        ResourceKey.create(Registries.RECIPE, Identifier.parse("silvercraft:" + recipeName))
+                ))
+                .save(consumer, Identifier.fromNamespaceAndPath("silvercraft", advancementId));
+    }
+}

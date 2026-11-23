@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "silvercraft:silver_helmet",
+    "silvercraft:silver_chestplate",
+    "silvercraft:silver_leggings",
+    "silvercraft:silver_boots"
+  ]
+}

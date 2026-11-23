@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "silvercraft:silver_sword",
+    "silvercraft:silver_spear",
+    "silvercraft:silver_axe",
+    "silvercraft:silver_pickaxe",
+    "silvercraft:silver_shovel",
+    "silvercraft:silver_hoe"
+  ]
+}

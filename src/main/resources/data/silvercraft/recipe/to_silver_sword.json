@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "pattern": [
+    "#",
+    "#",
+    "/"
+  ],
+  "key": {
+    "#": "silvercraft:silver_ingot",
+    "/": "minecraft:stick"
+  },
+  "result": {
+    "id": "silvercraft:silver_sword"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "has_ingredients": {
+      "conditions": {
+        "items": [
+          {
+            "items": "silvercraft:raw_silver_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_ingredients"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "silvercraft:silvercraft_raw_silver"
+    ]
+  },
+  "sends_telemetry_event": true
+}

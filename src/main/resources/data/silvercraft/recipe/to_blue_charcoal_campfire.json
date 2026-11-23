@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "experience": 1.5,
+  "cookingtime": 70,
+  "ingredient": "minecraft:charcoal",
+  "result": {
+    "id": "silvercraft:blue_charcoal"
+  }
+}

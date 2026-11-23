@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "experience": 2,
+  "cookingtime": 1000,
+  "ingredient": "minecraft:charcoal",
+  "result": {
+    "id": "silvercraft:blue_charcoal"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": "silvercraft:oxidation_silver_block"
+  },
+  "result": {
+    "id": "silvercraft:oxidation_silver_ingot",
+    "count": 9
+  }
+}
