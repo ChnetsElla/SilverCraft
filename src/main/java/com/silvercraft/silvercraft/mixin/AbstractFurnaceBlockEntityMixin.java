@@ -36,7 +36,8 @@ public class AbstractFurnaceBlockEntityMixin {
         // 确保物品列表至少有输入槽(1)和燃料槽(1)
         if (items.size() < 3) return;
 
-        ItemStack input = items.get(1);
+        // 槽位布局：0=输入槽，1=燃料槽，2=结果槽
+        ItemStack input = items.get(0);
         ItemStack fuel = items.get(1);
 
         // 规则：如果输入的是秽银，但燃料不是兰炭，直接返回 false 阻止烧炼
